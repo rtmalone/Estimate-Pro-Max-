@@ -1,0 +1,34 @@
+{
+    "lwc": { "modules": [
+        { "dir": "$rootDir/src/modules" }, 
+        { "npm": "lightning-base-components" }
+    ] },
+    "routes": [
+        {
+            "id": "home",
+            "path": "/",
+            "rootComponent": "c/app",
+            "layoutTemplate": "$layoutsDir/main.njk",
+            "bootstrap": {
+                "syntheticShadow": true
+            }
+        }
+
+    ],
+    "assets": [
+        {
+            "alias": "assetsDir",
+            "dir": "$rootDir/src/assets",
+            "urlPath": "/public/assets"
+        },
+        {
+            "file": "$rootDir/src/assets/icons/utility-sprite/svg/symbols.svg",
+            "urlPath": "/lightning.utilitySprite"
+        },
+        {
+            "alias": "favicon",
+            "file": "$rootDir/src/assets/favicon.ico",
+            "urlPath": "/favicon.ico"
+        }
+    ]
+}

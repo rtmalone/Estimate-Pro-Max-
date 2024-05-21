@@ -1,0 +1,12 @@
+.quote-wrapper {
+    margin: auto;
+    max-width: 900px;
+}
+
+header {
+    background-color: rgb(3, 45, 96);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+

@@ -1,0 +1,4 @@
+node_modules/
+.sfdx/
+__lwr_cache__/
+site/

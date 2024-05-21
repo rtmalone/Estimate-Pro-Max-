@@ -1,0 +1,8 @@
+section + section {
+    margin-top: 2rem;
+}
+
+.total-cost_row {
+    display: flex;
+    justify-content: space-between;
+}

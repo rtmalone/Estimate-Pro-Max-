@@ -1,0 +1,49 @@
+<template>  
+    <div class="slds-grid slds-gutters slds-grid_pull-padded-medium">
+         <div class="slds-size_1-of-2 slds-p-horizontal_medium">
+             <lightning-accordion allow-multiple-sections-open class="example-accordion" active-section-name={activeSection}>
+                <lightning-accordion-section name={constants.MATERIAL_SECTION_NAME} label="Material Costs">
+                    <lightning-datatable
+                        hide-checkbox-column
+                        max-column-width="250"
+                        key-field="id"
+                        data={materialCosts}
+                        columns={columns}
+                        onrowaction={handleRowAction}>
+                    </lightning-datatable>
+                </lightning-accordion-section>
+                    
+                <lightning-accordion-section name={constants.LABOR_SECTION_NAME} label="Labor Costs">
+                    <lightning-datatable
+                        hide-checkbox-column
+                        max-column-width="250"
+                        key-field="id"
+                        data={laborCosts}
+                        columns={columns}
+                        onrowaction={handleRowAction}>
+                    </lightning-datatable>
+                </lightning-accordion-section>
+                
+                <lightning-accordion-section name={constants.INCLUSIVE_SECTION_NAME} label="All Inclusive Costs">
+                    <lightning-datatable
+                        hide-checkbox-column
+                        max-column-width="250"
+                        key-field="id"
+                        data={inclusiveCosts}
+                        columns={columns}
+                        onrowaction={handleRowAction}>
+                    </lightning-datatable>
+                </lightning-accordion-section>
+            </lightning-accordion>
+        </div>
+        <div class="slds-size_1-of-2 slds-p-horizontal_medium">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium">Estimate Preview</h2>
+            <c-quote data={quote} ondelete={handleDelete}></c-quote>
+            <div class="slds-clearfix slds-m-top_medium">
+                <span class="slds-float_right">
+                    <lightning-button variant="brand" label="Save Estimate" title="Create Estimate" onclick={handleCreate} disabled={isButtonDisabled}></lightning-button>
+                </span>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,96 @@
+<template>
+    <div class="slds-box slds-theme_default">
+        <section lwc:if={quoteHasMaterials}>
+            <h1 class="slds-text-heading_medium slds-border_bottom slds-m-bottom_medium slds-p-left_x-small slds-theme_alt-inverse">{constants.MATERIAL_SECTION_NAME}</h1>
+            <c-quote-section-header read-only={readOnly}></c-quote-section-header>
+            <template for:each={data.materials} for:item="material">
+                <div class="slds-grid slds-m-vertical_x-small" key={material.id}>
+                    <div class={computeClasses}>
+                        <div>{material.name}</div>
+                    </div>
+                    <div class={computeClasses}>
+                        <lightning-formatted-number value={material.cost} format-style="currency" currency-code="USD"></lightning-formatted-number>
+                    </div>
+                    <div class={computeClasses}>
+                        <div>{material.unit}</div>
+                    </div>
+                    <div class={computeClasses}>
+                        <div>{material.quantity}</div>
+                    </div>
+                    <div class={computeClasses}>
+                        <lightning-formatted-number value={material.totalCost} format-style="currency" currency-code="USD"></lightning-formatted-number>
+                    </div>
+                    <div lwc:if={showEdit} class={computeClasses}>
+                        <lightning-button-icon onclick={handleDelete} data-id={material.id} icon-name="utility:dash" class="slds-align_absolute-center" size="x-small" alternative-text="Settings" title="Settings"></lightning-button-icon>
+                    </div>
+                </div>
+            </template>
+        </section>
+    
+        <section lwc:if={quoteHasLabor}>
+            <h1 class="slds-text-heading_medium slds-border_bottom slds-m-bottom_medium slds-p-left_x-small slds-theme_alt-inverse">{constants.LABOR_SECTION_NAME}</h1>
+            <c-quote-section-header read-only={readOnly}></c-quote-section-header>
+            <template for:each={data.labor} for:item="labor">
+                <div class="slds-grid slds-m-vertical_x-small" key={labor.id}>
+                    <div class={computeClasses}>
+                        <div>{labor.name}</div>
+                    </div>
+                    <div class={computeClasses}>
+                        <lightning-formatted-number value={labor.cost} format-style="currency" currency-code="USD"></lightning-formatted-number>
+                    </div>
+                    <div class={computeClasses}>
+                        <div>{labor.unit}</div>
+                    </div>
+                    <div class={computeClasses}>
+                        <div>{labor.quantity}</div>
+                    </div>
+                    <div class={computeClasses}>
+                        <lightning-formatted-number value={labor.totalCost} format-style="currency" currency-code="USD"></lightning-formatted-number>
+                    </div>
+                    <div lwc:if={showEdit} class={computeClasses}>
+                        <lightning-button-icon onclick={handleDelete} data-id={labor.id} icon-name="utility:dash" class="slds-align_absolute-center" size="x-small" alternative-text="Settings" title="Settings"></lightning-button-icon>
+                    </div>
+                </div>
+            </template>
+        </section>
+
+        <section lwc:if={quoteHasInclusive}>
+            <h1 class="slds-text-heading_medium slds-border_bottom slds-m-bottom_medium slds-p-left_x-small slds-theme_alt-inverse">{constants.INCLUSIVE_SECTION_NAME}</h1>
+            <c-quote-section-header read-only={readOnly}></c-quote-section-header>
+            <template for:each={data.inclusive} for:item="inclusive">
+                <div class="slds-grid slds-m-vertical_x-small" key={inclusive.id}>
+                    <div class={computeClasses}>
+                        <div>{inclusive.name}</div>
+                    </div>
+                    <div class={computeClasses}>
+                        <lightning-formatted-number value={inclusive.cost} format-style="currency" currency-code="USD"></lightning-formatted-number>
+                    </div>
+                    <div class={computeClasses}>
+                        <div>{inclusive.unit}</div>
+                    </div>
+                    <div class={computeClasses}>
+                        <div>{inclusive.quantity}</div>
+                    </div>
+                    <div class={computeClasses}>
+                        <lightning-formatted-number value={inclusive.totalCost} format-style="currency" currency-code="USD"></lightning-formatted-number>
+                    </div>
+                    <div lwc:if={showEdit} class={computeClasses}>
+                        <lightning-button-icon onclick={handleDelete} data-id={inclusive.id} icon-name="utility:dash" class="slds-align_absolute-center" size="x-small" alternative-text="Settings" title="Settings"></lightning-button-icon>
+                    </div>
+                </div>
+            </template>
+        </section>
+
+        <template lwc:if={showTotalCost}>
+            <section class="slds-m-top_medium slds-border_top">
+                <div class="total-cost_row slds-text-title_bold slds-p-top_x-small" >
+                    <span class="slds-text-heading_small">Grand Total</span>
+                    <lightning-formatted-number value={grandTotal} format-style="currency" currency-code="USD"></lightning-formatted-number>
+                </div>
+            </section>
+        </template>
+        <template lwc:else>
+            <c-illustration type="desert" title="Start adding line items to the estimate."></c-illustration>
+        </template>
+    </div>
+</template>
